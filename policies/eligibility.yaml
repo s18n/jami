@@ -1,11 +1,13 @@
-rb-1003:
+type: eligibility
+policies:
+- rb-1003:
   id: aGVsbG8K
   type: group
   description: |
     Runbook policy #1003
   accounts: ["b2VxcXAzCg", "MzRsa25mMwo"]
   permissions: ["MzQzbjMK", "c3BkbWRrbjMK"]
-rb-1004:
+- rb-1004:
   id: aGVsbG8K
   type: group
   description: |
