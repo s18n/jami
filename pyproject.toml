@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "jami"
+version = "0.1.0"
+description = ""
+authors = ["Sam Holden <sam.holden@capgemini.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.4.2"
+pylint = "^3.0.3"
+black = "^24.2.0"
+bandit = "^1.7.7"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
