@@ -1,6 +1,6 @@
 policy_type: eligibility                  # This should always be eligibility
 id: id                                    # Add the ID of your user or group here
-entity_type: [group|user]                 # This should be group or user
+entity_type: group|user                   # This should be group or user
 description: |
   Add the description of your policy here
 accounts: ["", ""]                        # Populate this list with AWS account IDs

@@ -14,29 +14,32 @@ from common.policy import Policy  # pylint: disable=import-error
 
 def main():
     """Main entry point of the app"""
-    logger.info("fetching policies...")
 
-    path = getcwd()
+    # initialise policy lists
     elig_data = []
+    appr_data = []
+
+    # fetch policy files
+    path = getcwd()
     elig_path = f"{path}/policies/eligibility/"
-    print(listdir(elig_path))
+    appr_path = f"{path}/policies/approval/"
     elig_files = [f for f in listdir(elig_path) if isfile(join(elig_path, f))]
+    appr_files = [f for f in listdir(appr_path) if isfile(join(appr_path, f))]
+
+    # collect approval policy filenames
+    for file in appr_files:
+        logger.info("fetch appr policy...")
+        appr_data.append(Policy(f"{appr_path}{file}"))
+
+    # print all appr policies
+    print([policy.policy for policy in appr_data])
 
     # collect elgibility policy filenames
     for file in elig_files:
-        print(file)
         elig_data.append(Policy(f"{elig_path}{file}"))
 
-    # print eligibility policies
-    for policy in elig_data:
-        print(f"file_path:\n\t{policy.file_path}")
-        print(f"policy:\n\t{policy.policy}")
-
-    # eligibility = Policy("eligibility.yaml")
-    # approval = Policy("approval.yaml")
-
-    # logger.info("eligibility policies:\n\t%s", eligibility.policy)
-    # logger.info("approval policies:\n\t%s", approval.policy)
+    # print all elig policies
+    print([policy.policy for policy in elig_data])
 
 
 if __name__ == "__main__":
