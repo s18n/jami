@@ -27,3 +27,14 @@ repos:
         entry: poetry run pylint src/
         language: system
         types: [python]
+      - id: bandit
+        name: bandit
+        entry: poetry run bandit
+        args: [
+          "-r",
+          "-c", "pyproject.toml",
+          "-v",
+          "src/"
+        ]
+        language: system
+        types: [python]
