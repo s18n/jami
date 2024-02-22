@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Read config, produce object
+Read yaml, produce object
 """
 
 import os
