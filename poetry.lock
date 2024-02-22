@@ -213,6 +213,20 @@ files = [
 colors = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "logzero"
+version = "1.7.0"
+description = "Robust and effective logging for Python 2 and 3"
+optional = false
+python-versions = "*"
+files = [
+    {file = "logzero-1.7.0-py2.py3-none-any.whl", hash = "sha256:23eb1f717a2736f9ab91ca0d43160fd2c996ad49ae6bad34652d47aba908769d"},
+    {file = "logzero-1.7.0.tar.gz", hash = "sha256:7f73ddd3ae393457236f081ffebd044a3aa2e423a47ae6ddb5179ab90d0ad082"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "sys_platform == \"win32\""}
+
+[[package]]
 name = "markdown-it-py"
 version = "3.0.0"
 description = "Python port of markdown-it. Markdown parsing, done right!"
@@ -483,4 +497,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "c73c646bbb72ef0bd7868170ddcf339da8abe215520d23e3d8069456ad14d0b9"
+content-hash = "5a3b449200de961da051440a5a07d7c5080636f26bfaf8ebdb7e6481ae7a7e4d"
