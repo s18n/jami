@@ -1,7 +1,7 @@
 policy_type: eligibility
-id: aGVsbG8K
+id: B09DDBA7-B529-487B-9AE4-3646EBAD706D
 entity_type: group
 description: |
   Runbook policy #1004
-accounts: ["b2VxcXAzCg", "MzRsa25mMwo"]
-permissions: ["MzQzbjMK", "c3BkbWRrbjMK"]
+accounts: ["1D472364-6596-4055-A131-907E89C69922"]
+permissions: ["46909FF4-7C27-4AF8-96DE-B5AC0166BE36"]
