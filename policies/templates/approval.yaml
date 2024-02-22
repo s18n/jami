@@ -1,0 +1,4 @@
+policy_type: approval     # This should always be approval
+id: id                    # Add the ID of your user or group here
+entity_type: [group|user] # This should be group or user
+accounts: ["", ""]        # Populate this list with AWS account IDs
