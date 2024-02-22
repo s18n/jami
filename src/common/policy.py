@@ -4,8 +4,6 @@ Module Docstring
 """
 
 
-import os
-
 import yaml
 from logzero import logger
 
@@ -13,14 +11,14 @@ from logzero import logger
 class Policy:
     """Base Class for policy objects."""
 
-    def __init__(self, file_name):
+    def __init__(self, file_path):
         """Initialise client for identity store.
 
         Args:
             identity_store_id (string):
                 The globally unique identifier for the identity store.
         """
-        self.file_name = file_name
+        self.file_path = file_path
         self.policy = self.read()
 
     def update(self):
@@ -40,13 +38,9 @@ class Policy:
         Returns:
             _type_: _description_
         """
-        # get current directory
-        path = os.getcwd()
+        logger.info("reading policy file: %s", self.file_path)
 
-        logger.info("reading policy file: %s", self.file_name)
-
-        policy_file_path = f"{path}/policies/{self.file_name}"
-        with open(policy_file_path, encoding="utf8") as stream:
+        with open(self.file_path, encoding="utf8") as stream:
             try:
                 policy = yaml.safe_load(stream)
             except yaml.YAMLError as exc:

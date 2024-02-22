@@ -1,0 +1,7 @@
+policy_type: eligibility
+id: aGVsbG8K
+entity_type: group
+description: |
+    Runbook policy #1003
+accounts: ["b2VxcXAzCg", "MzRsa25mMwo"]
+permissions: ["MzQzbjMK", "c3BkbWRrbjMK"]
