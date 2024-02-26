@@ -1,4 +1,4 @@
-# README Boilerplate
+# Dynamodb table item Jam
 
 This project is a code jam, to explore the possibilities of using python to read
 from a config file & construct dynamodb table items.
