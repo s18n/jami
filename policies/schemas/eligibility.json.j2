@@ -1,0 +1,6 @@
+{
+  "id": {"S": "{{id}}" },
+  "name": {"S": "{{name}}" },
+  "accounts": {"L": [
+    {% for account in accounts %}{"M": {"id": {"S": "{{account['id']}}" }, "name": {"S": "{{account['name']}}" }]}, {% endfor %}
+}

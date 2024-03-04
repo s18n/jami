@@ -1,8 +1,12 @@
-policy_type: approval     # This should always be approval
-id: id                    # Add the ID of your user or group here
-type: Account
-name: "approval policy"
-ticket_number: PLAT-XXX
-accounts: ["", ""]        # Populate this list with AWS account IDs
+---
+policy_type: approval
+id: id
+name: approval policy
 description: |
   Add the description of your policy here
+
+accounts: [""]
+group_ids: [""]
+ous: [""]
+ticket_number: PLAT-XXX
+type: group

@@ -1,10 +1,14 @@
+---
 policy_type: eligibility
 id: B09DDBA7-B529-487B-9AE4-3646EBAD706D
-name: "runbook #3748"
-ticket_number: "PLAT-3748"
-entity_policy_type: group
+name: 'runbook #3748'
 description: |
   Runbook policy #3748
+
 accounts: ["1D472364-6596-4055-A131-907E89C69922"]
+approval_required: true
+duration: 8
+entity_policy_type: group
+ous: [""]
 permissions: ["46909FF4-7C27-4AF8-96DE-B5AC0166BE36"]
-approval_required: True
+ticket_number: PLAT-3748

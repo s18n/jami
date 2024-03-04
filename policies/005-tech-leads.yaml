@@ -1,7 +1,12 @@
+---
 policy_type: approval
 id: 64395443-7BF1-4037-A928-5F40D7D0E480
-entity_policy_type: group
-ticket_number: "PLAT-2345"
-accounts: ["1D472364-6596-4055-A131-907E89C69922", "1FDC1BBD-1B55-475E-AD9E-37B332DE5676"]
+name: tech leads
 description: |
   Approvers policy for Tech Leads.
+
+accounts: ["1D472364-6596-4055-A131-907E89C69922", "1FDC1BBD-1B55-475E-AD9E-37B332DE5676"]
+group_ids: [""]
+ous: [""]
+ticket_number: PLAT-2345
+type: group

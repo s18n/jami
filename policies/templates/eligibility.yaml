@@ -1,11 +1,14 @@
+---
 policy_policy_type: eligibility
 id: id
-name: "eligibility policy"
-entity_policy_type: group|user
-ticket_number: PLAT-XXX
+name: eligibility policy
 description: |
   Add the description of your policy here
-accounts: ["", ""]
-ous: [""]
-permissions: ["", ""]
+
+accounts: [""]
+approval_required: true|false
 duration: 0
+entity_policy_type: group|user
+ous: [""]
+permissions: [""]
+ticket_number: PLAT-XXX
