@@ -1,7 +1,10 @@
 policy_type: eligibility
 id: FD832D9F-70F6-43D0-BE9B-6C54AD03F44F
-entity_type: group
+name: "runbook #4932"
+ticket_number: "PLAT-4932"
+entity_policy_type: group
 description: |
   Runbook policy #4932
 accounts: ["1FDC1BBD-1B55-475E-AD9E-37B332DE5676"]
 permissions: ["7985D2B9-0D69-4BAC-806D-2A15ED1D8571"]
+approval_required: False

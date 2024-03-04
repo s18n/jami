@@ -1,7 +1,10 @@
 policy_type: eligibility
 id: FE63A494-2E6C-427C-B9CB-FF577DC0C8C0
-entity_type: group
+name: "runbook #8788"
+ticket_number: "PLAT-8788"
+entity_policy_type: group
 description: |
   Runbook policy #8788
 accounts: ["1FDC1BBD-1B55-475E-AD9E-37B332DE5676"]
 permissions: ["7985D2B9-0D69-4BAC-806D-2A15ED1D8571"]
+approval_required: True

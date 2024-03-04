@@ -1,7 +1,10 @@
-policy_type: eligibility                  # This should always be eligibility
+policy_policy_type: eligibility                  # This should always be eligibility
 id: id                                    # Add the ID of your user or group here
-entity_type: group|user                   # This should be group or user
+name: "eligibility policy"
+entity_policy_type: group|user                   # This should be group or user
 description: |
   Add the description of your policy here
 accounts: ["", ""]                        # Populate this list with AWS account IDs
+ous: [""]
 permissions: ["", ""]                     # Populate this list with permission set ARNs
+duration: 0

@@ -1,6 +1,0 @@
-policy_type: approval
-id: 9EA39C1E-AF3F-4F83-A1E4-03D80A01ECB3
-entity_type: group
-accounts: ["1D472364-6596-4055-A131-907E89C69922"]
-description: |
-  Policy to for runbook #4563
