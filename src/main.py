@@ -80,7 +80,7 @@ def main():
     # load & initialise individual policy documents
     policy_data = load_policies_from_yaml(policy_path)
 
-    [print(policy.table_item) for policy in policy_data]
+    [print(policy.table_item) for policy in policy_data if policy.policy_type == 'eligibility']
 
 
 if __name__ == "__main__":

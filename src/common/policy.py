@@ -14,37 +14,35 @@ org_client = boto3.client('organizations')
 sso_client = boto3.client('sso-admin')
 
 
+def generate_table_item(data):
+    policy_file_name = data.policy_type + ".json.j2"
+    template_file = path.join(data.policy_path, "schemas/", policy_file_name)
+
+    with open(template_file, 'r') as file:
+        policy_template = file.read()
+
+    template = Template(policy_template)
+
+
+    return template.render(data.__dict__)
+
+
 class Policy:  # pylint: disable=too-few-public-methods
     """policy base class"""
 
     def __init__(self, data):
-        self.data = data
-        self.policy_path = data['policy_path']
-        self.name = data["name"]
+        # policy metadata
+        self.policy_type = data["policy_type"]
         self.id = data["id"]
+        self.name = data["name"]
         self.description = data["description"]
 
+        # policy content
         self.accounts = self._fetch_accounts(data["accounts"])
+        self.data = data
         self.ous = data["ous"]
-
-        self.policy_type = data["policy_type"]
+        self.policy_path = data['policy_path']
         self.ticket_number = data["ticket_number"]
-        self.table_item = self._generate_table_item()
-
-
-    def _generate_table_item(self):
-        policy_file_name = self.policy_type + ".json.j2"
-        template_file = path.join(self.policy_path, "schemas/", policy_file_name)
-
-        logger.debug(template_file)
-
-        with open(template_file, 'r') as file:
-            policy_template = file.read()
-
-        template = Template(policy_template)
-
-
-        return template.render(self.__dict__)
 
 
     def _fetch_accounts(self, accounts):
@@ -61,9 +59,6 @@ class Policy:  # pylint: disable=too-few-public-methods
             except Exception as error:
                 logger.error(error)
 
-        for account in account_data:
-            print(account['id'])
-
 
         return account_data
 
@@ -76,23 +71,28 @@ class Eligibility(Policy):  # pylint: disable=too-few-public-methods
     """
     def __init__(self, data):
         super().__init__(data)
-        self.permissions = self.fetch_permissions(data["permissions"])
+        self.permission_sets = self._fetch_permissions(data["permissions"])
         self.duration = data["duration"]
         self.approval_required = data["approval_required"]
+        self.table_item = generate_table_item(self)
     
 
-    def fetch_permissions(self, permission_sets):
-        permission_data = {}
+    def _fetch_permissions(self, permission_sets):
+        permission_data = []
 
         for permission_set in permission_sets:
             try:
                 response = sso_client.describe_permission_set(
-                    InstanceArn='string',
-                    PermissionSetArn='string'
+                    InstanceArn='', #[TODO: parameters from config file]
+                    PermissionSetArn=permission_set
                 )
-                permission_data[response['PermissionSet']['Name']] = permission_set
+                permission_data.append({
+                    "arn": permission_set,
+                    "name": response['PermissionSet']['Name']
+                })
             except Exception as error:
                 logger.error(error)
+
 
         return permission_data
         

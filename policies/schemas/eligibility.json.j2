@@ -1,6 +1,14 @@
 {
   "id": {"S": "{{id}}" },
   "name": {"S": "{{name}}" },
-  "accounts": {"L": [
-    {% for account in accounts %}{"M": {"id": {"S": "{{account['id']}}" }, "name": {"S": "{{account['name']}}" }]}, {% endfor %}
+  "accounts": 
+    {"L": [
+      {% for account in accounts %}{"M": {"id": {"S": "{{account['id']}}" }, "name": {"S": "{{account['name']}}" }]}, {% endfor %}
+    ]
+  },
+  "permissions": 
+    {"L": [
+      {% for permission_set in permission_sets %}{"M": {"id": {"S": "{{permission_set['arn']}}" },"name": {"S": "{{permission_set['name']}}" }}}]}, {% endfor %}
+    ]
+  }
 }
