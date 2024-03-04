@@ -1,21 +1,23 @@
+
 policy_type: eligibility
 id: FFC7241A-009B-4B7B-944B-50B41059BB2D
 name: "runbook #4563"
-ticket_number: "PLAT-4563"
-entity_policy_type: group
 description: |
   Runbook policy #4653
+entity_policy_type: group
+ticket_number: "PLAT-4563"
 accounts: ["1D472364-6596-4055-A131-907E89C69922", "1FDC1BBD-1B55-475E-AD9E-37B332DE5676"]
-ous:
+ous: [""]
 permissions: ["46909FF4-7C27-4AF8-96DE-B5AC0166BE36", "7985D2B9-0D69-4BAC-806D-2A15ED1D8571"]
 approval_required: True
 duration: 8
-
 ---
 policy_type: approval
 id: 9EA39C1E-AF3F-4F83-A1E4-03D80A01ECB3
 ticket_number: "PLAT-4563"
 entity_policy_type: group
+approvers: ["approver_group"]
 accounts: ["1D472364-6596-4055-A131-907E89C69922"]
+group_ids: [""]
 description: |
   Policy to for runbook #4563

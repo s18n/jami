@@ -1,10 +1,11 @@
-policy_policy_type: eligibility                  # This should always be eligibility
-id: id                                    # Add the ID of your user or group here
+policy_policy_type: eligibility
+id: id
 name: "eligibility policy"
-entity_policy_type: group|user                   # This should be group or user
+entity_policy_type: group|user
+ticket_number: PLAT-XXX
 description: |
   Add the description of your policy here
-accounts: ["", ""]                        # Populate this list with AWS account IDs
+accounts: ["", ""]
 ous: [""]
-permissions: ["", ""]                     # Populate this list with permission set ARNs
+permissions: ["", ""]
 duration: 0
