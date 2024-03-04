@@ -4,48 +4,43 @@ Module Docstring
 """
 
 
-import yaml
-from logzero import logger
+class Policy:  # pylint: disable=too-few-public-methods
+    """policy base class"""
+
+    def __init__(self, data):
+        self.name = data["name"]
+        self.id = data["id"]
+        self.description = data["description"]
+
+        self.accounts = data["accounts"]
+        self.ous = data["ous"]
+
+        self.policy_type = data["policy_type"]
+        self.ticket_number = data["ticket_number"]
 
 
-class Policy:
-    """Base Class for policy objects."""
+class Eligibility(Policy):  # pylint: disable=too-few-public-methods
+    """
 
-    def __init__(self, file_path):
-        """Initialise client for identity store.
+    Args:
+        Policy (_type_): _description_
+    """
 
-        Args:
-            identity_store_id (string):
-                The globally unique identifier for the identity store.
-        """
-        self.file_path = file_path
-        self.policy = self.read()
+    def __init__(self, data):
+        super().__init__(data)
+        self.permissions = data["permissions"]
+        self.duration = data["duration"]
+        self.approval_required = data["approval_required"]
 
-    def update(self):
-        """Add meta data to policy object.
 
-        Args:
-            bar (_type_): _description_
+class Approval(Policy):  # pylint: disable=too-few-public-methods
+    """
 
-        Returns:
-            _type_: _description_
-        """
-        return self.policy
+    Args:
+        Policy (_type_): _description_
+    """
 
-    def read(self):
-        """Read policy file.
-
-        Returns:
-            _type_: _description_
-        """
-        logger.info("reading policy file: %s", self.file_path)
-
-        with open(self.file_path, encoding="utf8") as stream:
-            try:
-                policy = yaml.safe_load(stream)
-            except yaml.YAMLError as exc:
-                print(exc)
-
-        logger.info("policy loaded successfully...")
-
-        return policy
+    def __init__(self, data):
+        super().__init__(data)
+        self.type = data["type"]
+        self.group_ids = data["group_ids"]

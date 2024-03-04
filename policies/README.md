@@ -10,8 +10,8 @@ A template of README best practices to make your README simple to understand and
 
 ## Usage
 
-Depending on which type of policy you plan to implement:
-  - Duplicate a copy of the matching policy type from the templates directory
+Depending on which policy_type of policy you plan to implement:
+  - Duplicate a copy of the matching policy policy_type from the templates directory
   - Place it in the corresponding policy directory.
   - Edit to reflect the desired context of the policy.
 
