@@ -11,7 +11,10 @@ repos:
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
-        args: []
+        args: [
+          --strict,
+          --force-scope
+        ]
 
 
   - repo: local
