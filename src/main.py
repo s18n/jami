@@ -2,10 +2,7 @@
 """
 Read yaml, produce object
 """
-
-
 from os import getcwd, listdir, path
-from pprint import pprint
 
 import yaml
 from logzero import logger
@@ -40,6 +37,8 @@ def load_policies_from_yaml(policy_path):
 
                     # load separate yaml documents
                     for policy_doc in yaml.safe_load_all(file):
+                        policy_doc["policy_path"] = policy_path
+
                         # initialise object class based on policy type
                         # fmt: off
                         logger.info(
@@ -84,10 +83,13 @@ def main():
     # load & initialise individual policy documents
     policy_data = load_policies_from_yaml(policy_path)
 
-    # print all policies
-    pprint([(policy.id, policy.description) for policy in policy_data])
+    items = [
+        print(policy.table_item)
+        for policy in policy_data
+        if policy.policy_type == "eligibility"
+    ]
 
-    # [TODO: execute terraform classes]
+    print(items)
 
 
 if __name__ == "__main__":

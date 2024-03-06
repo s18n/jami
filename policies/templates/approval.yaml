@@ -5,3 +5,4 @@ name: "approval policy"
 ticket_number: PLAT-XXX
 description: |
   Add the description of your policy here
+group_ids: [""]
