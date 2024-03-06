@@ -40,12 +40,11 @@ class Policy:  # pylint: disable=too-few-public-methods
     def __init__(self, data):
         # policy metadata
         self.policy_type = data["policy_type"]
+        self.policy_path = data["policy_path"]
         self.id = data["id"]
         self.name = data["name"]
         self.description = data["description"]
-        self.policy_type = data["policy_type"]
         self.data = data
-        self.policy_path = data["policy_path"]
         self.ticket_number = data["ticket_number"]
 
 
