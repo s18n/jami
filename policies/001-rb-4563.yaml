@@ -9,7 +9,8 @@ accounts: ["708169909512"]
 approval_required: true
 duration: 8
 ous: [""]
-permissions: ["arn:aws:sso:::permissionSet/ssoins-7535bb3f8a631c93/ps-42aba85a961eb8fa"]
+permissions:
+ - "arn:aws:sso:::permissionSet/ssoins-7535bb3f8a631c93/ps-42aba85a961eb8fa"
 ---
 policy_type: approval
 id: 9EA39C1E-AF3F-4F83-A1E4-03D80A01ECB3
