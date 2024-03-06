@@ -40,8 +40,14 @@ def load_policies_from_yaml(policy_path):
 
                     # load separate yaml documents
                     for policy_doc in yaml.safe_load_all(file):
-
                         # initialise object class based on policy type
+                        # fmt: off
+                        logger.info(
+                            "initialising policy: %s",
+                            policy_doc["id"]
+                            )
+                        # fmt: on
+
                         match policy_doc["policy_type"]:
                             case "eligibility":
                                 policies.append(Eligibility(policy_doc))

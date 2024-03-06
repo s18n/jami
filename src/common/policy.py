@@ -11,10 +11,6 @@ class Policy:  # pylint: disable=too-few-public-methods
         self.name = data["name"]
         self.id = data["id"]
         self.description = data["description"]
-
-        self.accounts = data["accounts"]
-        self.ous = data["ous"]
-
         self.policy_type = data["policy_type"]
         self.ticket_number = data["ticket_number"]
 
@@ -31,6 +27,8 @@ class Eligibility(Policy):  # pylint: disable=too-few-public-methods
         self.permissions = data["permissions"]
         self.duration = data["duration"]
         self.approval_required = data["approval_required"]
+        self.accounts = data["accounts"]
+        self.ous = data["ous"]
 
 
 class Approval(Policy):  # pylint: disable=too-few-public-methods
