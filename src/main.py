@@ -95,6 +95,7 @@ def intialise_policies(policy_documents, policy_path):
 
 def main():
     """Main entry point of the app"""
+    # initialise terraform scope
     app = App()
 
     # construct path to policy directory
@@ -107,6 +108,8 @@ def main():
     # initialise list of Policy class objects
     policy_objects = intialise_policies(policy_documents, policy_path)
 
+    # filter list of eliibility policies, because approval policies aren't
+    # supported yet.
     # fmt: off
     elig_policies = [
         policy
@@ -115,12 +118,14 @@ def main():
     ]
     # fmt: on
 
+    # initialise TableItemStack with the list of eligilbity policy objects.
     TableItemStack(
         app,
         "stack",
         elig_policies,
     )
 
+    # synthesize terraform code
     app.synth()
 
 
