@@ -37,6 +37,7 @@ repos:
           "-r",
           "-c", "pyproject.toml",
           "-v",
+          "--exclude", "src/imports",
           "src/"
         ]
         language: system
