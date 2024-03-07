@@ -5,9 +5,11 @@ Read yaml, produce object
 from os import getcwd, listdir, path
 
 import yaml
+from cdktf import App
 from logzero import logger
 
 from common.policy import Approval, Eligibility  # pylint: disable=import-error
+from common.terraform import TableItemStack  # pylint: disable=import-error
 
 
 def load_policies_from_yaml(policy_path):
@@ -34,31 +36,10 @@ def load_policies_from_yaml(policy_path):
                 with open(
                     path.join(policy_path, policy_file), "r", encoding="UTF-8"
                 ) as file:
-
                     # load separate yaml documents
                     for policy_doc in yaml.safe_load_all(file):
-                        policy_doc["policy_path"] = policy_path
+                        policies.append(policy_doc)
 
-                        # initialise object class based on policy type
-                        # fmt: off
-                        logger.info(
-                            "initialising policy: %s",
-                            policy_doc["id"]
-                            )
-                        # fmt: on
-
-                        match policy_doc["policy_type"]:
-                            case "eligibility":
-                                policies.append(Eligibility(policy_doc))
-                            case "approval":
-                                policies.append(Approval(policy_doc))
-                            case _:
-                                # fmt: off
-                                logger.error(
-                                    "type unkown: %s",
-                                    policy_doc["policy_type"]
-                                )
-                                # fmt: on
             except FileNotFoundError as error:
                 # fmt: off
                 logger.error(
@@ -72,24 +53,80 @@ def load_policies_from_yaml(policy_path):
     return policies
 
 
+def intialise_policies(policy_documents, policy_path):
+    """use policy dictionaries to intialise policy class objects.
+
+    Args:
+        policy_documents (list): _description_
+        policy_path (str): _description_
+
+    Returns:
+        list: policy class objects
+    """
+    # policy_objects list to store initialised policy classes
+    policy_objects = []
+    # iterate through policy_documents to intialise policies
+    for policy in policy_documents:
+
+        policy["policy_path"] = policy_path
+        # initialise object class based on policy type
+        # fmt: off
+        logger.info(
+            "initialising policy: %s",
+            policy["id"]
+        )
+        # fmt: on
+
+        match policy["policy_type"]:
+            case "eligibility":
+                policy_objects.append(Eligibility(policy))
+            case "approval":
+                policy_objects.append(Approval(policy))
+            case _:
+                # fmt: off
+                logger.error(
+                    "type unkown: %s",
+                    policy["policy_type"]
+                )
+                # fmt: on
+
+    return policy_objects
+
+
 def main():
     """Main entry point of the app"""
-    policy_data = []
+    # initialise terraform scope
+    app = App()
 
     # construct path to policy directory
     policy_path = path.join(getcwd(), "policies")
     logger.info("policy path: %s", policy_path)
 
-    # load & initialise individual policy documents
-    policy_data = load_policies_from_yaml(policy_path)
+    # load individual policy documents as list of dicts
+    policy_documents = load_policies_from_yaml(policy_path)
 
-    items = [
-        print(policy.table_item)
-        for policy in policy_data
+    # initialise list of Policy class objects
+    policy_objects = intialise_policies(policy_documents, policy_path)
+
+    # filter list of eliibility policies, because approval policies aren't
+    # supported yet.
+    # fmt: off
+    elig_policies = [
+        policy
+        for policy in policy_objects
         if policy.policy_type == "eligibility"
     ]
+    # fmt: on
 
-    print(items)
+    # initialise TableItemStack with the list of eligilbity policy objects.
+    TableItemStack(
+        app,
+        "stack",
+        elig_policies,
+    )
+
+    # synthesize terraform code
+    app.synth()
 
 
 if __name__ == "__main__":

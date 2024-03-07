@@ -56,12 +56,14 @@ class Eligibility(Policy):  # pylint: disable=too-few-public-methods
     """
 
     def __init__(self, data):
+        # inherit base class properties
         super().__init__(data)
+
+        # eligibility properties
         self.permission_sets = self._fetch_permissions(data["permissions"])
         self.duration = data["duration"]
         self.approval_required = data["approval_required"]
         self.accounts = self._fetch_accounts(data["accounts"])
-        self.accounts = data["accounts"]
         self.ous = data["ous"]
         self.table_item = generate_table_item(self)
 
@@ -86,7 +88,7 @@ class Eligibility(Policy):  # pylint: disable=too-few-public-methods
             try:
                 response = sso_client.describe_permission_set(
                     # [TODO: parameters from config file]
-                    InstanceArn="arn:aws:sso:::instance/ssoins-7535bb3f8a631c93",  # pylint: disable=line-too-long # noqa: 501
+                    InstanceArn="arn:aws:sso:::instance/ssoins-7535a6236da922a7",  # pylint: disable=line-too-long # noqa: 501
                     PermissionSetArn=permission_set,
                 )
                 permission_data.append(

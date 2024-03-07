@@ -1,15 +1,22 @@
 ---
 policy_type: eligibility
 id: FFC7241A-009B-4B7B-944B-50B41059BB2D
-name: 'runbook #4563'
+name: 'elig-runbook-4563'
 description: |
   Runbook policy #4653
 ticket_number: "PLAT-4563"
-accounts: ["708169909512"]
+accounts:
+  - "533266956210"
 approval_required: true
 duration: 8
 ous: [""]
-permissions: ["arn:aws:sso:::permissionSet/ssoins-7535bb3f8a631c93/ps-42aba85a961eb8fa"]
+permissions:
+ - arn:aws:sso:::permissionSet/ssoins-7535a6236da922a7/ps-8b56088cf28992d9
+ - arn:aws:sso:::permissionSet/ssoins-7535a6236da922a7/ps-78fc80d2fc3df66a
+ - arn:aws:sso:::permissionSet/ssoins-7535a6236da922a7/ps-4cb7be94f4252736
+ - arn:aws:sso:::permissionSet/ssoins-7535a6236da922a7/ps-a0cc91ff151b6d2b
+ - arn:aws:sso:::permissionSet/ssoins-7535a6236da922a7/ps-f0d1b3996eac54db
+ - arn:aws:sso:::permissionSet/ssoins-7535a6236da922a7/ps-197683d11ea94bab
 ---
 policy_type: approval
 id: 9EA39C1E-AF3F-4F83-A1E4-03D80A01ECB3

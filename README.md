@@ -12,7 +12,7 @@ from a config file & construct dynamodb table items.
 ## Pre-requisites
 
 - [pre-commit](https://pre-commit.com/#install)
-- [python poetry](https://python-poetry.org/docs/#installation)
+- [poetry](https://python-poetry.org/docs/#installation)
 - [pyenv](https://github.com/pyenv/pyenv/#installation)
 
 ## Installation
